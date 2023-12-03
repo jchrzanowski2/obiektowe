@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pl.edu.agh.to2.example.controller.RegisterPageController"
+      styleClass="mainBox"
+      prefHeight="400.0" prefWidth="600.0">
+    <VBox>
+        <Label styleClass="welcomeText" text="Welcome to Library!"/>
+        <Label styleClass="labels" text="Firstname"/>
+        <TextField fx:id="firstname" onAction="#register"/>
+        <Label styleClass="errorLabel" fx:id="firstNameErrorLabel" text="Error" visible="false"/>
+        <Label styleClass="labels"  text="Lastname"/>
+        <TextField fx:id="lastname" onAction="#register"/>
+        <Label styleClass="errorLabel" fx:id="lastNameErrorLabel" text="Error" visible="false"/>
+        <Label styleClass="labels"  text="Email"/>
+        <TextField fx:id="email" onAction="#register"/>
+        <Label styleClass="errorLabel" fx:id="EmailErrorLabel" text="Error" visible="false"/>
+        <Label styleClass="labels"  text="Password"/>
+        <TextField fx:id="password" onAction="#register"/>
+        <Label styleClass="errorLabel" fx:id="PasswordErrorLabel" text="Error" visible="false"/>
+        <Button styleClass="button" onAction="#register" text="Register"/>
+    </VBox>
+    <stylesheets>
+        <URL value="@../css/RegisterPanel.css" />
+    </stylesheets>
+</VBox>
+

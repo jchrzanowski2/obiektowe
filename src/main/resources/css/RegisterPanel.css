@@ -1,0 +1,31 @@
+.welcomeText {
+    -fx-font-size: 80px;
+    -fx-text-fill: #2c4949;
+    -fx-text-align: center;
+}
+
+.labels {
+    -fx-font-size: 16px;
+    -fx-font-style: oblique;
+    -fx-text-fill: #2c4949;
+}
+
+.errorLabel{
+    -fx-text-fill: #ff0000;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px
+}
+
+button{
+    -fx-background-color: #3d5b5b;
+}
+
+.button {
+    -fx-background-color: #3dbfe5;
+    -fx-font-size: 20px;
+    -fx-font-style: oblique;
+}
+
+.mainBox {
+    -fx-background-color: #e9eef3;
+}
