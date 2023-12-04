@@ -4,7 +4,8 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<VBox xmlns="http://javafx.com/javafx"
+<VBox fillWidth="false"
+      xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="pl.edu.agh.to2.example.controller.RegisterPageController"
       styleClass="mainBox"

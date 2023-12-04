@@ -1,14 +1,14 @@
 package pl.edu.agh.to2.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
-@Entity
+@Getter
+@Data
 public class Book {
 
     @Id
-    @GeneratedValue
     private long bookID;
     private int quantity;
     private int rating;
@@ -20,9 +20,4 @@ public class Book {
         this.rating = rating;
     }
 
-    public long getBookID() {return this.bookID;}
-
-    public int getQuantity(){return this.quantity;}
-
-    public int getRating(){return this.rating;}
 }

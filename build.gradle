@@ -12,11 +12,25 @@ apply plugin: 'org.openjfx.javafxplugin'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://repo.spring.io/release"
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 application {
-    mainClassName = 'pledu.agh.to2.example.Main'
+    mainClassName = 'pledu.agh.to2.example.App'
 }
+
+run {
+    jvmArgs = ["--add-opens", "javafx.graphics/javafx.css=ALL-UNNAMED"]
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -41,11 +55,24 @@ test {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.jetbrains:annotations:24.0.0'
-    implementation 'org.jetbrains:annotations:24.0.0'
+    implementation 'io.projectreactor:reactor-core'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation 'org.projectlombok:lombok:1.18.22'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    ////problem z połączeniem z bazą danych
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    runtimeOnly 'org.mysql:mysql'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.10'
+
+    // either object for validation
+    implementation 'io.vavr:vavr:0.10.3'
 }

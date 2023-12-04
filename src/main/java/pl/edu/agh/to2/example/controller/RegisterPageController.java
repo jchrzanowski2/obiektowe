@@ -5,15 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
-import pl.edu.agh.to2.example.event.RegisterEvent;
 import pl.edu.agh.to2.example.service.RegisterService;
-import pl.edu.agh.to2.example.util.SceneChanger;
 
 import java.net.URL;
 
 @Controller
+@ComponentScan(basePackages = "pl.edu.agh.to2.example.service")
 public class RegisterPageController {
     @FXML
     private Label firstNameErrorLabel;
@@ -31,10 +30,9 @@ public class RegisterPageController {
     private TextField lastname;
     @FXML
     private TextField firstname;
+
     @Autowired
-    private RegisterService registerService = new RegisterService();
-    @Autowired
-    private ApplicationContext applicationContext;
+    public RegisterService registerService;
 
     public static URL getFXML() {
         return RegisterPageController.class.getClassLoader().getResource("fxml/RegisterPanel.fxml");
@@ -42,15 +40,15 @@ public class RegisterPageController {
 
     public void register(ActionEvent actionEvent) {
         boolean firstNameCorrect = registerService.registerFirstName(firstname.getText());
-        boolean lastNameCorrect = registerService.registerFirstName(lastname.getText());
-        boolean emailCorrect = registerService.registerFirstName(email.getText());
-        boolean passwordCorrect = registerService.registerFirstName(password.getText());
+        boolean lastNameCorrect = registerService.registerLastName(lastname.getText());
+        boolean emailCorrect = registerService.registerEmail(email.getText());
+        boolean passwordCorrect = registerService.registerPassword(password.getText());
         firstNameErrorLabel.setVisible(!firstNameCorrect);
         lastNameErrorLabel.setVisible(!lastNameCorrect);
         EmailErrorLabel.setVisible(!emailCorrect);
         PasswordErrorLabel.setVisible(!passwordCorrect);
         if(firstNameCorrect && lastNameCorrect && emailCorrect && passwordCorrect){
-            System.out.println("Correct!");
+            //registerService.addUser(new User(firstname.getText(), lastname.getText(), email.getText(), password.getText(), "user"));
         }
     }
 }

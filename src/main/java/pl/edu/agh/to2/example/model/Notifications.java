@@ -1,37 +1,27 @@
 package pl.edu.agh.to2.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import lombok.Data;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-@Entity
+@Getter
+@Data
 public class Notifications {
 
     @Id
-    @GeneratedValue
     private long id;
-
-    @ManyToOne
-    private User user;
+    private int userId;
     private String message;
     private Date sendDate;
 
     public Notifications(){}
 
-    public Notifications(User user, String message, Date sendDate){
-        this.user = user;
+    public Notifications(int userId, String message, Date sendDate){
+        this.userId = userId;
         this.message = message;
         this.sendDate = sendDate;
     }
 
-    public long getId(){return this.id;}
-
-    public User getUser(){return this.user;}
-
-    public String getMessage(){return this.message;}
-
-    public Date getSendDate(){return this.sendDate;}
 }
