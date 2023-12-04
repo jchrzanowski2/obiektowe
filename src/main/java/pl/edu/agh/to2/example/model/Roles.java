@@ -1,9 +1,11 @@
 package pl.edu.agh.to2.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
-@Entity
+@Getter
+@Data
 public class Roles {
 
     @Id
@@ -17,7 +19,4 @@ public class Roles {
         this.description = description;
     }
 
-    public String getRoleName(){return this.roleName;}
-
-    public String getDescription(){return this.description;}
 }

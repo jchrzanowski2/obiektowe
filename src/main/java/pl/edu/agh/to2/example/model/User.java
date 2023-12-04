@@ -1,23 +1,24 @@
 package pl.edu.agh.to2.example.model;
 
-import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
-@Entity
+@Getter
+@Data
 public class User {
 
     @Id
-    @GeneratedValue
     private long userID;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    @ManyToOne
-    private Roles role;
+    private String role;
 
     public User(){}
 
-    public User(String firstName, String lastName, String email, String password, Roles role) {
+    public User(String firstName, String lastName, String email, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -25,15 +26,4 @@ public class User {
         this.role = role;
     }
 
-    public long getUserID(){return this.userID;}
-
-    public String getFirstName(){return this.firstName;}
-
-    public String getLastName(){return this.lastName;}
-
-    public String getEmail(){return this.email;}
-
-    public String getPassword(){return this.password;}
-
-    public Roles getRole() { return this.role; }
 }

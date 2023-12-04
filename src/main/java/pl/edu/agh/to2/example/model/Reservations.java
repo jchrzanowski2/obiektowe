@@ -1,38 +1,28 @@
 package pl.edu.agh.to2.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import lombok.Data;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-@Entity
+@Getter
+@Data
 public class Reservations {
 
     @Id
-    @GeneratedValue
     private long reservationID;
 
-    @ManyToOne
-    private User user;
+    private int userId;
     private Date startDate;
     private Date endDate;
 
     public Reservations(){}
 
-    public Reservations(User user, Date startDate, Date endDate){
-        this.user = user;
+    public Reservations(int userId, Date startDate, Date endDate){
+        this.userId = userId;
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
-    public long getReservationID(){return this.reservationID;}
-
-    public User getUser(){return this.user;}
-
-    public Date getStartDate(){return this.startDate;}
-
-    public Date getEndDate(){return this.endDate;}
 
 }

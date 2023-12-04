@@ -1,15 +1,15 @@
 package pl.edu.agh.to2.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import lombok.Data;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
-@Entity
+@Getter
+@Data
 public class BookDetails {
 
     @Id
-    @OneToOne
-    private Book book;
+    private int bookId;
     private String author;
     private String title;
     private String cover;
@@ -18,25 +18,13 @@ public class BookDetails {
 
     public BookDetails(){}
 
-    public BookDetails(Book book, String author, String title, String cover, String contents, String genre){
-        this.book = book;
+    public BookDetails(int bookId, String author, String title, String cover, String contents, String genre){
+        this.bookId = bookId;
         this.author = author;
         this.title = title;
         this.cover = cover;
         this.contents = contents;
         this.genre = genre;
     }
-
-    public Book getBook(){return this.book;}
-
-    public String getAuthor(){return this.author;}
-
-    public String getTitle(){return this.title;}
-
-    public String getCover(){return this.cover;}
-
-    public String getContents(){return this.contents;}
-
-    public String getGenre(){return this.genre;}
 
 }
