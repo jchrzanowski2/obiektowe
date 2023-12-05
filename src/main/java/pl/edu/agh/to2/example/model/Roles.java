@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 public class Roles {
 
     @Id
+    private long id;
     private String roleName;
     private String description;
 

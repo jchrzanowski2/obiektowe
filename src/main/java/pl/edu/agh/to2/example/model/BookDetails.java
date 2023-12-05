@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 public class BookDetails {
 
     @Id
-    private int bookId;
+    private int id;
     private String author;
     private String title;
     private String cover;
@@ -18,8 +18,8 @@ public class BookDetails {
 
     public BookDetails(){}
 
-    public BookDetails(int bookId, String author, String title, String cover, String contents, String genre){
-        this.bookId = bookId;
+    public BookDetails(int id, String author, String title, String cover, String contents, String genre){
+        this.id = id;
         this.author = author;
         this.title = title;
         this.cover = cover;

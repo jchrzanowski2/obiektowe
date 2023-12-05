@@ -5,15 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
-import pl.edu.agh.to2.example.model.User;
+import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.service.RegisterService;
 
 import java.net.URL;
 
 @Controller
-@ComponentScan(basePackages = "pl.edu.agh.to2.example.service")
 public class RegisterPageController {
     @FXML
     private Label firstNameErrorLabel;
@@ -49,7 +47,7 @@ public class RegisterPageController {
         EmailErrorLabel.setVisible(!emailCorrect);
         PasswordErrorLabel.setVisible(!passwordCorrect);
         if(firstNameCorrect && lastNameCorrect && emailCorrect && passwordCorrect){
-            registerService.addUser(new User(firstname.getText(), lastname.getText(), email.getText(), password.getText(), "user"));
+            registerService.addUser(new LoginUser(firstname.getText(), lastname.getText(), email.getText(), password.getText(), 3));
         }
     }
 }

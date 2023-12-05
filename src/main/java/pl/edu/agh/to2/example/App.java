@@ -3,13 +3,11 @@ package pl.edu.agh.to2.example;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import pl.edu.agh.to2.example.controller.RegisterPageController;
 import pl.edu.agh.to2.example.util.SceneChanger;
 
-@SpringBootApplication
 public class App extends Application  {
     private ConfigurableApplicationContext applicationContext;
 

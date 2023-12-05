@@ -6,24 +6,24 @@ import org.springframework.data.annotation.Id;
 
 @Getter
 @Data
-public class User {
+public class LoginUser {
 
     @Id
-    private long userID;
+    private long id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private String role;
+    private long roleid;
 
-    public User(){}
+    public LoginUser(){}
 
-    public User(String firstName, String lastName, String email, String password, String role) {
+    public LoginUser(String firstName, String lastName, String email, String password, long roleid) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.roleid = roleid;
     }
 
 }
