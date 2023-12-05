@@ -54,10 +54,6 @@ test {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
-    implementation 'org.jetbrains:annotations:24.0.0'
-    implementation 'io.projectreactor:reactor-core'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation 'org.projectlombok:lombok:1.18.22'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -65,15 +61,18 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
-    ////problem z połączeniem z bazą danych
-    implementation 'mysql:mysql-connector-java:8.0.28'
-    implementation 'io.asyncer:r2dbc-mysql:1.0.2'
-    runtimeOnly 'org.mysql:mysql'
+    //rxjava
+    implementation "io.reactivex.rxjava3:rxjava:3.1.5"
 
     //gson
     implementation 'com.google.code.gson:gson:2.10'
 
+    //db
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation 'io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE'
+    runtimeOnly 'org.postgresql:postgresql'
+
     // either object for validation
     implementation 'io.vavr:vavr:0.10.3'
+
 }

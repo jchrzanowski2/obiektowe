@@ -28,8 +28,8 @@ public class RegisterService {
     }
 
     public boolean registerEmail(String email){
-        return true;
-        //return !email.isEmpty() && emailPattern.matcher(email).matches() && checkIfEmailExists(email);
+        //return true;
+        return !email.isEmpty() && emailPattern.matcher(email).matches() && checkIfEmailExists(email);
     }
 
     public boolean registerPassword(String password){
