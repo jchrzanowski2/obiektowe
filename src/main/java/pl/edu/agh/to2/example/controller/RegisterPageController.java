@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
+import pl.edu.agh.to2.example.model.User;
 import pl.edu.agh.to2.example.service.RegisterService;
 
 import java.net.URL;
@@ -48,7 +49,7 @@ public class RegisterPageController {
         EmailErrorLabel.setVisible(!emailCorrect);
         PasswordErrorLabel.setVisible(!passwordCorrect);
         if(firstNameCorrect && lastNameCorrect && emailCorrect && passwordCorrect){
-            //registerService.addUser(new User(firstname.getText(), lastname.getText(), email.getText(), password.getText(), "user"));
+            registerService.addUser(new User(firstname.getText(), lastname.getText(), email.getText(), password.getText(), "user"));
         }
     }
 }

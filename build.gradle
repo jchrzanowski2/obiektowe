@@ -24,7 +24,7 @@ configurations {
 }
 
 application {
-    mainClassName = 'pledu.agh.to2.example.App'
+    mainClassName = 'pl.edu.agh.to2.example.App'
 }
 
 run {
@@ -68,6 +68,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
     ////problem z połączeniem z bazą danych
     implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'io.asyncer:r2dbc-mysql:1.0.2'
     runtimeOnly 'org.mysql:mysql'
 
     //gson

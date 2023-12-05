@@ -1,7 +1,10 @@
 package pl.edu.agh.to2.example.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
+import pl.edu.agh.to2.example.dao.UserDAO;
+import pl.edu.agh.to2.example.model.User;
 
 import java.util.regex.Pattern;
 
@@ -9,8 +12,8 @@ import java.util.regex.Pattern;
 @ComponentScan(basePackages = "pl.edu.agh.to2.example.dao")
 public class RegisterService {
 
-    //@Autowired
-    //public UserDAO userDAO;
+    @Autowired
+    public UserDAO userDAO;
 
     private final Pattern firstNamepattern = Pattern.compile("^[A-Z][a-z]+$");
     private final Pattern lastNamePattern = Pattern.compile("^[A-Z][a-z]+$");
@@ -33,12 +36,12 @@ public class RegisterService {
         return !password.isEmpty();
     }
 
-   //public void addUser(User user){
-   //    userDAO.save(user);
-   //}
-//
-   //private boolean checkIfEmailExists(String email){
-   //    return Boolean.TRUE.equals(userDAO.findByEmail(email).hasElement().block());
-   //}
+   public void addUser(User user){
+       userDAO.save(user);
+   }
+
+   private boolean checkIfEmailExists(String email){
+       return Boolean.TRUE.equals(userDAO.findByEmail(email).hasElement().block());
+   }
 
 }

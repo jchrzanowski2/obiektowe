@@ -16,7 +16,7 @@ public class SceneChanger {
 
     public static void changeScene(URL fxml) {
         var fxmlLoader = new FXMLLoader(fxml);
-        fxmlLoader.setControllerFactory(applicationContext::getBean);
+        //fxmlLoader.setControllerFactory(applicationContext::getBean);
         /*
         Jakimś cudem spring nie dodaje klasy z anotacją @Component @Service i @Repository do beanów, a powinien.
         Ale jak się najedzie na ikonke przy app init i kliknie na navigate to spring bean ..., to je pokazuje.
