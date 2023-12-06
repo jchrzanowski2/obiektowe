@@ -59,7 +59,8 @@ public class RegisterPageController {
         }
 
         if (firstNameCorrect && lastNameCorrect && emailCorrect && passwordCorrect) {
-            registerService.addUser(new LoginUser(firstname.getText(), lastname.getText(), email.getText(), password.getText(), 3));
+            System.out.println("Added user");
+            registerService.addUser(new LoginUser(firstname.getText(), lastname.getText(), email.getText(), password.getText(), 2));
         }
     }
 
