@@ -11,7 +11,7 @@ import java.util.Date;
 public class ReservationLog {
 
     @Id
-    private long reservationLogID;
+    private long id;
 
     private int reservationId;
     private Date startDate;

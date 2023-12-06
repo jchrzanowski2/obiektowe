@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 public class Book {
 
     @Id
-    private long bookID;
+    private long id;
     private int quantity;
     private int rating;
 
