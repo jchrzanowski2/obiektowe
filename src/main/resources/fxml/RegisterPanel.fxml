@@ -19,10 +19,10 @@
         <Label styleClass="errorLabel" fx:id="lastNameErrorLabel" text="Error" visible="false"/>
         <Label styleClass="labels"  text="Email"/>
         <TextField fx:id="email" onAction="#register"/>
-        <Label styleClass="errorLabel" fx:id="EmailErrorLabel" text="Error" visible="false"/>
+        <Label styleClass="errorLabel" fx:id="emailErrorLabel" text="Error" visible="false"/>
         <Label styleClass="labels"  text="Password"/>
         <TextField fx:id="password" onAction="#register"/>
-        <Label styleClass="errorLabel" fx:id="PasswordErrorLabel" text="Error" visible="false"/>
+        <Label styleClass="errorLabel" fx:id="passwordErrorLabel" text="Error" visible="false"/>
         <Button styleClass="button" onAction="#register" text="Register"/>
     </VBox>
     <stylesheets>

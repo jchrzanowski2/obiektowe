@@ -6,6 +6,6 @@ import pl.edu.agh.to2.example.model.LoginUser;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface UserDAO  extends CrudRepository<LoginUser, Integer> {
+public interface UserDAO extends CrudRepository<LoginUser, Integer> {
     Mono<LoginUser> findByEmail(String email);
 }
