@@ -12,11 +12,25 @@ apply plugin: 'org.openjfx.javafxplugin'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://repo.spring.io/release"
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 application {
-    mainClassName = 'pledu.agh.to2.example.Main'
+    mainClassName = 'pl.edu.agh.to2.example.App'
 }
+
+run {
+    jvmArgs = ["--add-opens", "javafx.graphics/javafx.css=ALL-UNNAMED"]
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -40,12 +54,25 @@ test {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
-    implementation 'org.jetbrains:annotations:24.0.0'
-    implementation 'org.jetbrains:annotations:24.0.0'
     testImplementation 'org.projectlombok:lombok:1.18.22'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    //rxjava
+    implementation "io.reactivex.rxjava3:rxjava:3.1.5"
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.10'
+
+    //db
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation 'io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // either object for validation
+    implementation 'io.vavr:vavr:0.10.3'
+
 }
