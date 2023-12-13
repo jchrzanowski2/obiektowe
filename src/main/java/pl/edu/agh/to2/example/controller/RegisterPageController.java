@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.reactive.TransactionalOperator;
 import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.service.RegisterService;
 
@@ -32,6 +33,8 @@ public class RegisterPageController {
 
     @Autowired
     public RegisterService registerService;
+    @Autowired
+    private TransactionalOperator transactionalOperator;
 
     public static URL getFXML() {
         return RegisterPageController.class.getClassLoader().getResource("fxml/RegisterPanel.fxml");
@@ -59,8 +62,7 @@ public class RegisterPageController {
         }
 
         if (firstNameCorrect && lastNameCorrect && emailCorrect && passwordCorrect) {
-            System.out.println("Added user");
-            registerService.addUser(new LoginUser(firstname.getText(), lastname.getText(), email.getText(), password.getText(), 2));
+            registerService.addUser(new LoginUser(firstname.getText(), lastname.getText(), email.getText(), password.getText(), 2L)).subscribe();
         }
     }
 

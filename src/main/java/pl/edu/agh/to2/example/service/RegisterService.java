@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.to2.example.dao.UserDAO;
 import pl.edu.agh.to2.example.model.LoginUser;
+import reactor.core.publisher.Mono;
 
 import java.util.regex.Pattern;
 
@@ -33,14 +34,14 @@ public class RegisterService {
         return !password.isEmpty();
     }
 
-   public void addUser(LoginUser user){
-        userDAO.save(user);
-   }
+    public Mono<LoginUser> addUser(LoginUser user){
+        return this.userDAO.save(user);
+    }
 
-   private boolean emailExists(String email){
-           return userDAO.findByEmail(email)
-                   .hasElement()
-                   .blockOptional()
-                   .orElse(false);
-   }
+    private boolean emailExists(String email){
+        return userDAO.findByEmail(email)
+                .hasElement()
+                .blockOptional()
+                .orElse(false);
+    }
 }

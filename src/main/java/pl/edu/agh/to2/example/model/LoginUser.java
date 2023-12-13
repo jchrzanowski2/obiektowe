@@ -18,7 +18,7 @@ public class LoginUser {
 
     public LoginUser(){}
 
-    public LoginUser(String firstName, String lastName, String email, String password, long roleid) {
+    public LoginUser(String firstName, String lastName, String email, String password, Long roleid) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
