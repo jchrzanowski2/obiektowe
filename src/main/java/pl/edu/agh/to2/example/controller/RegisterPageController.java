@@ -9,11 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.reactive.TransactionalOperator;
 import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.service.RegisterService;
+import pl.edu.agh.to2.example.util.SceneChanger;
 
 import java.net.URL;
 
 @Controller
 public class RegisterPageController {
+
+    @FXML
+    private Label errorLabel;
     @FXML
     private Label firstNameErrorLabel;
     @FXML
@@ -63,6 +67,11 @@ public class RegisterPageController {
 
         if (firstNameCorrect && lastNameCorrect && emailCorrect && passwordCorrect) {
             registerService.addUser(new LoginUser(firstname.getText(), lastname.getText(), email.getText(), password.getText(), 2L)).subscribe();
+            errorLabel.setVisible(false);
+            SceneChanger.changeScene(LoginPageController.getFXML());
+        }
+        else{
+            errorLabel.setVisible(true);
         }
     }
 

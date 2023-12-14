@@ -1,5 +1,6 @@
 package pl.edu.agh.to2.example.dao;
 
+import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 import pl.edu.agh.to2.example.model.LoginUser;
@@ -9,4 +10,9 @@ import reactor.core.publisher.Mono;
 public interface UserDAO extends R2dbcRepository<LoginUser, Long> {
     Mono<LoginUser> findByEmail(String email);
 
+    @Query("""
+            SELECT * from login_user l
+            where l.email = :email and l.password = :password
+            """)
+    Mono<LoginUser> findAllByEmailAndPassword(String email, String password);
 }

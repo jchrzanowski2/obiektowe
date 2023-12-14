@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pl.edu.agh.to2.example.controller.AddBookController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label styleClass="welcomeText" text="Add new Book"/>
+    <center>
+        <VBox>
+            <Label styleClass="labels" text="Author"/>
+            <TextField fx:id="author" onAction="#addNewBook"/>
+            <Label styleClass="errorLabel" fx:id="authorErrorLabel" text="Error" visible="false"/>
+            <Label styleClass="labels"  text="Title"/>
+            <TextField fx:id="title" onAction="#addNewBook"/>
+            <Label styleClass="errorLabel" fx:id="titleError" text="Error" visible="false"/>
+            <Label styleClass="labels"  text="Cover"/>
+            <TextField fx:id="cover" onAction="#addNewBook"/>
+            <Label styleClass="errorLabel" fx:id="coverError" text="Error" visible="false"/>
+            <Label styleClass="labels"  text="contents"/>
+            <TextField fx:id="contents" onAction="#addNewBook"/>
+            <Label styleClass="errorLabel" fx:id="contentsErrorLabel" text="Error" visible="false"/>
+            <Label styleClass="labels"  text="genre"/>
+            <TextField fx:id="genre" onAction="#addNewBook"/>
+            <Label styleClass="errorLabel" fx:id="genreErrorLabel" text="Error" visible="false"/>
+            <Label styleClass="labels"  text="quantity"/>
+            <TextField fx:id="quantity" onAction="#addNewBook"/>
+            <Label styleClass="errorLabel" fx:id="quantityErrorLabel" text="Error" visible="false"/>
+            <Button styleClass="button" onAction="#addNewBook" text="Add"/>
+            <Label styleClass="errorLabel" fx:id="errorLabel" text="Error" visible="false"/>
+        </VBox>
+    </center>
+    <stylesheets>
+        <URL value="@../css/RegisterPanel.css" />
+    </stylesheets>
+</BorderPane>

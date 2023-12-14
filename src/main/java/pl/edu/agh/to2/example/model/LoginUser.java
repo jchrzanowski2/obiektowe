@@ -1,11 +1,13 @@
 package pl.edu.agh.to2.example.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
 @Getter
 @Data
+@AllArgsConstructor
 public class LoginUser {
 
     @Id
@@ -16,7 +18,9 @@ public class LoginUser {
     private String password;
     private long roleid;
 
-    public LoginUser(){}
+    public LoginUser(){
+
+    }
 
     public LoginUser(String firstName, String lastName, String email, String password, Long roleid) {
         this.firstName = firstName;
