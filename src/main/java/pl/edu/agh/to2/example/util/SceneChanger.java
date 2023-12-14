@@ -22,10 +22,6 @@ public class SceneChanger {
         for (String beanName : beanNames) {
             System.out.println("Bean --> "+ beanName); // print bean
         }
-        /*
-        Jakimś cudem spring nie dodaje klasy z anotacją @Component @Service i @Repository do beanów, a powinien.
-        Ale jak się najedzie na ikonke przy app init i kliknie na navigate to spring bean ..., to je pokazuje.
-         */
         try {
             mainStage.setScene(new Scene(fxmlLoader.load(), 800, 600));
         } catch (IOException e) {
@@ -54,5 +50,6 @@ public class SceneChanger {
 
     public static void setMainPane(BorderPane mainPane) {
         SceneChanger.mainPane = mainPane;
+        System.out.println(SceneChanger.mainPane);
     }
 }

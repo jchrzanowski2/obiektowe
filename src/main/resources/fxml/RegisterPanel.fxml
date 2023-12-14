@@ -24,6 +24,7 @@
         <TextField fx:id="password" onAction="#register"/>
         <Label styleClass="errorLabel" fx:id="passwordErrorLabel" text="Error" visible="false"/>
         <Button styleClass="button" onAction="#register" text="Register"/>
+        <Label styleClass="errorLabel" fx:id="errorLabel" text="Error" visible="false"/>
     </VBox>
     <stylesheets>
         <URL value="@../css/RegisterPanel.css" />

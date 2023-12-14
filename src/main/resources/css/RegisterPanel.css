@@ -29,3 +29,7 @@ button{
 .mainBox {
     -fx-background-color: #e9eef3;
 }
+
+left{
+    -fx-fit-to-height: true;
+}
