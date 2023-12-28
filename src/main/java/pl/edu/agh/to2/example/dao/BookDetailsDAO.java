@@ -1,7 +1,9 @@
 package pl.edu.agh.to2.example.dao;
 
+import org.springframework.data.r2dbc.repository.Modifying;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import pl.edu.agh.to2.example.model.Book;
 import pl.edu.agh.to2.example.model.BookDetails;
 import reactor.core.publisher.Mono;
 
@@ -16,5 +18,26 @@ public interface BookDetailsDAO  extends R2dbcRepository<BookDetails, Long> {
             SELECT * from book_details
             """)
     Mono<BookDetails> findAllBooks();
+
+    @Modifying
+    @Query("""
+        DELETE FROM book_details
+        WHERE id = :id
+        """)
+    Mono<Void> deleteById(Long id);
+
+    @Query("""
+        SELECT * FROM book_details
+        WHERE id = :id
+        """)
+    Mono<BookDetails> findByID(Long id);
+
+    @Modifying
+    @Query("""
+        UPDATE book_details
+        SET author = :author, title = :title, cover = :cover, contents = :contents, genre = :genre
+        WHERE id = :id
+        """)
+    Mono<BookDetails> updateBookDetails(Long id, String author, String title, String cover, String contents, String genre);
 
 }
