@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
 import pl.edu.agh.to2.example.Enum.PageEnum;
 import pl.edu.agh.to2.example.event.LoginEvent;
+import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.service.PermissionService;
 import pl.edu.agh.to2.example.util.SceneChanger;
 
@@ -16,6 +17,7 @@ import java.net.URL;
 
 @Controller
 public class MainPageController implements ApplicationListener<LoginEvent> {
+    private LoginUser loggedInUser;
     @FXML
     public ListView<String> categoriesListView;
     @FXML
@@ -30,8 +32,11 @@ public class MainPageController implements ApplicationListener<LoginEvent> {
     @FXML
     public void initialize() {
         SceneChanger.setMainPane(mainPane);
-        categoriesListView.getItems().add("add_book");
-        categoriesListView.getItems().add("books");
+        if(permissionService.canAddBooks(loggedInUser)) {
+            categoriesListView.getItems().add("add_book");
+        }else if(permissionService.canViewBooks(loggedInUser)) {
+            categoriesListView.getItems().add("books");
+        }
         categoriesListView.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 PageEnum currentPage = PageEnum.valueOf(observable.getValue().toUpperCase());
@@ -46,6 +51,6 @@ public class MainPageController implements ApplicationListener<LoginEvent> {
 
     @Override
     public void onApplicationEvent(LoginEvent event) {
-        //TODO
+        this.loggedInUser = (LoginUser) event.getSource();
     }
 }

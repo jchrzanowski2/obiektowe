@@ -16,6 +16,11 @@ public class LoginUser {
     private String lastName;
     private String email;
     private String password;
+
+    public long getRoleid() {
+        return roleid;
+    }
+
     private long roleid;
 
     public LoginUser(){

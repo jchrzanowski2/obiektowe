@@ -12,18 +12,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
+import pl.edu.agh.to2.example.event.LoginEvent;
 import pl.edu.agh.to2.example.model.Book;
 import pl.edu.agh.to2.example.model.BookDetails;
+import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.service.BooksPageService;
 import pl.edu.agh.to2.example.service.DeleteBookService;
+import pl.edu.agh.to2.example.service.PermissionService;
 
 import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-public class BooksPageController {
+public class BooksPageController implements ApplicationListener<LoginEvent> {
     @FXML
     private ListView<BookDetails> booksListView;
     @FXML
@@ -43,12 +47,17 @@ public class BooksPageController {
     @Autowired
     private DetailBookController detailBookController;
 
+    @Autowired
+    private PermissionService permissionService;
+    private LoginUser loggedInUser;
+
     public static URL getFXML() {
         return AddBookController.class.getClassLoader().getResource("fxml/Books.fxml");
     }
 
     @FXML
     void initialize() {
+
         this.booksListView.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(BookDetails book, boolean empty) {
@@ -83,8 +92,16 @@ public class BooksPageController {
             refreshList();
             return new VBox();
         });
-
         refreshList();
+        if (!permissionService.canDeleteBooks(loggedInUser)) {
+            deleteButton.setVisible(false);
+        }
+        if (!permissionService.canEditBooks(loggedInUser)) {
+            editButton.setVisible(false);
+        }
+        if (!permissionService.canViewBooks(loggedInUser)) {
+            detailsButton.setVisible(false);
+        }
     }
 
     private Void refreshList() {
@@ -132,5 +149,10 @@ public class BooksPageController {
         if (bookToDetail != null){
             detailBookController.showBookEditDialog(bookToDetail);
         }
+    }
+
+    @Override
+    public void onApplicationEvent(LoginEvent event) {
+        this.loggedInUser = (LoginUser) event.getSource();
     }
 }
