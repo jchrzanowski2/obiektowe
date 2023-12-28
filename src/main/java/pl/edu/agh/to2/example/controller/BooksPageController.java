@@ -126,6 +126,7 @@ public class BooksPageController {
         }
     }
 
+    @FXML
     public void handleDetailsAction(ActionEvent actionEvent) {
         var bookToDetail = booksListView.getSelectionModel().getSelectedItem();
         if (bookToDetail != null){
