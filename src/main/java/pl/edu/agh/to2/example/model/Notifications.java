@@ -5,7 +5,6 @@ import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
-import java.time.LocalDate;
 
 @Getter
 @Data

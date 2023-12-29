@@ -1,18 +1,13 @@
 package pl.edu.agh.to2.example.service;
 
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.to2.example.dao.*;
-import pl.edu.agh.to2.example.event.LoginEvent;
 import pl.edu.agh.to2.example.model.BookDetails;
 import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.model.ReservationBook;
 import pl.edu.agh.to2.example.model.Reservations;
 import reactor.core.publisher.Flux;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserPanelService {

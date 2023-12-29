@@ -4,23 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
 import pl.edu.agh.to2.example.event.LoginEvent;
-import pl.edu.agh.to2.example.model.Book;
-import pl.edu.agh.to2.example.model.BookDetails;
 import pl.edu.agh.to2.example.model.LoginUser;
-import pl.edu.agh.to2.example.service.AddBookService;
-import pl.edu.agh.to2.example.service.BooksPageService;
 import pl.edu.agh.to2.example.service.BorrowBookService;
-import pl.edu.agh.to2.example.service.UserPanelService;
-import pl.edu.agh.to2.example.util.SceneChanger;
 
-import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
 import java.util.stream.Collectors;
 

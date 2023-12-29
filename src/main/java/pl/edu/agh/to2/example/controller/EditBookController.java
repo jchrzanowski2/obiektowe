@@ -1,29 +1,18 @@
 package pl.edu.agh.to2.example.controller;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.edu.agh.to2.example.Enum.PageEnum;
 import pl.edu.agh.to2.example.dao.BookDAO;
 import pl.edu.agh.to2.example.model.Book;
 import pl.edu.agh.to2.example.model.BookDetails;
-import pl.edu.agh.to2.example.service.AddBookService;
 import pl.edu.agh.to2.example.service.DeleteBookService;
 import pl.edu.agh.to2.example.service.EditBookService;
 import pl.edu.agh.to2.example.util.SceneChanger;
-import reactor.core.publisher.Mono;
 
-
-import java.io.IOException;
 import java.net.URL;
 
 @Controller

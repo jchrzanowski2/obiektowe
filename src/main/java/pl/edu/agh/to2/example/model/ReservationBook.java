@@ -2,8 +2,6 @@ package pl.edu.agh.to2.example.model;
 
 import lombok.Data;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
-
 @Getter
 @Data
 public class ReservationBook {

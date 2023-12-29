@@ -3,9 +3,7 @@ package pl.edu.agh.to2.example.dao;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
-import pl.edu.agh.to2.example.model.Book;
 import pl.edu.agh.to2.example.model.ReservationBook;
-import pl.edu.agh.to2.example.model.Reservations;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
