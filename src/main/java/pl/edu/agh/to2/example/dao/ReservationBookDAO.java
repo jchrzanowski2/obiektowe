@@ -7,8 +7,6 @@ import pl.edu.agh.to2.example.model.ReservationBook;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDate;
-
 @Repository
 public interface ReservationBookDAO extends R2dbcRepository<ReservationBook, Long> {
     @Query("""

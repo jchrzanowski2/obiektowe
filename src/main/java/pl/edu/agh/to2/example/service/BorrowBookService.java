@@ -11,16 +11,10 @@ import pl.edu.agh.to2.example.model.BookDetails;
 import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.model.Reservations;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Calendar;
-import java.time.LocalDate;
 import java.util.List;
-
-import static java.util.Calendar.MONTH;
 
 @Service
 public class BorrowBookService {

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.reactive.TransactionalOperator;
-import org.w3c.dom.Text;
 import pl.edu.agh.to2.example.event.LoginEvent;
 import pl.edu.agh.to2.example.model.BookDetails;
 import pl.edu.agh.to2.example.model.LoginUser;
