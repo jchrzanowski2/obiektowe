@@ -4,7 +4,8 @@ import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDate;
 
 @Getter
 @Data
@@ -14,11 +15,11 @@ public class Notifications {
     private long id;
     private int userId;
     private String message;
-    private Date sendDate;
+    private LocalDate sendDate;
 
     public Notifications(){}
 
-    public Notifications(int userId, String message, Date sendDate){
+    public Notifications(int userId, String message, LocalDate sendDate){
         this.userId = userId;
         this.message = message;
         this.sendDate = sendDate;

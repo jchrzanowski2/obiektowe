@@ -65,7 +65,7 @@ public class DetailBookController {
     public void showBookEditDialog(BookDetails bookDetails) {
         this.bookDetails = bookDetails;
 
-        SceneChanger.setPane(this.getFXML());
+        SceneChanger.setPane(getFXML());
         this.setData(bookDetails);
     }
 }

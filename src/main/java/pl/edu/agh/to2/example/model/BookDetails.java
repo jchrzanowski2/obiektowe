@@ -26,4 +26,31 @@ public class BookDetails {
         this.genre = genre;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getFullTitle() {
+        return id + ": " + title + ", " + author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
 }

@@ -28,5 +28,15 @@ public class PermissionService {
         // Only users with role 1 can delete books
         return user.getRoleid() == 1 || user.getRoleid() == 0;
     }
+
+    public boolean canBorrowBooks(LoginUser user) {
+        // Only users with role 2 can borrow books
+        return user.getRoleid() == 2;
+    }
+
+    public boolean canAccessUserPanel(LoginUser user) {
+        // Everyone can access user panel
+        return true;
+    }
 }
 
