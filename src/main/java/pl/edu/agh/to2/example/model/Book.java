@@ -28,7 +28,20 @@ public class Book implements Persistable<Long> {
         this.rating = rating;
     }
 
+    @Override
+    public Long getId() {
+        return id;
+    }
+
     public boolean isNew() {
         return isNewEntry;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getRating() {
+        return rating;
     }
 }

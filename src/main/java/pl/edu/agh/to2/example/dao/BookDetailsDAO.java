@@ -3,8 +3,8 @@ package pl.edu.agh.to2.example.dao;
 import org.springframework.data.r2dbc.repository.Modifying;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
-import pl.edu.agh.to2.example.model.Book;
 import pl.edu.agh.to2.example.model.BookDetails;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BookDetailsDAO  extends R2dbcRepository<BookDetails, Long> {
@@ -18,6 +18,13 @@ public interface BookDetailsDAO  extends R2dbcRepository<BookDetails, Long> {
             SELECT * from book_details
             """)
     Mono<BookDetails> findAllBooks();
+
+    @Query("""
+            SELECT bd.* from book_details bd
+            JOIN book b ON b.id = bd.id
+            WHERE b.quantity > 0
+            """)
+    Flux<BookDetails> findAvailable();
 
     @Modifying
     @Query("""

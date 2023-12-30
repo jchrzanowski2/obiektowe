@@ -34,8 +34,15 @@ public class MainPageController implements ApplicationListener<LoginEvent> {
         SceneChanger.setMainPane(mainPane);
         if(permissionService.canAddBooks(loggedInUser)) {
             categoriesListView.getItems().add("add_book");
-        }else if(permissionService.canViewBooks(loggedInUser)) {
+        }
+        if(permissionService.canViewBooks(loggedInUser)) {
             categoriesListView.getItems().add("books");
+        }
+        if(permissionService.canBorrowBooks(loggedInUser)) {
+            categoriesListView.getItems().add("borrow_book");
+        }
+        if(permissionService.canAccessUserPanel(loggedInUser)) {
+            categoriesListView.getItems().add("user_panel");
         }
         categoriesListView.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             if (newValue != null) {
