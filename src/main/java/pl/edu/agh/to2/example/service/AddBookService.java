@@ -8,7 +8,7 @@ import pl.edu.agh.to2.example.model.Book;
 import pl.edu.agh.to2.example.model.BookDetails;
 import reactor.core.publisher.Mono;
 
-import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Service
@@ -45,7 +45,7 @@ public class AddBookService {
         return this.bookDetailsDAO.save(book);
     }
 
-    public Long getIDByAuthorAndTitle(String author, String title) {
-        return this.bookDetailsDAO.findAll().filter(bookDetails -> Objects.equals(bookDetails.getAuthor(), author) && Objects.equals(bookDetails.getTitle(), title)).blockFirst().getId();
+    public Optional<BookDetails> getIDByAuthorAndTitle(String author, String title) {
+        return bookDetailsDAO.findBookDetailsByAuthorAndAndTitle(author, title).blockOptional();
     }
 }

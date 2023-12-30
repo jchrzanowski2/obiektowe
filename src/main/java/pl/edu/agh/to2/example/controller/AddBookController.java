@@ -11,6 +11,9 @@ import pl.edu.agh.to2.example.model.BookDetails;
 import pl.edu.agh.to2.example.service.AddBookService;
 
 import java.net.URL;
+import java.util.Optional;
+
+import static java.lang.Thread.sleep;
 
 @Controller
 public class AddBookController {
@@ -46,7 +49,7 @@ public class AddBookController {
         return AddBookController.class.getClassLoader().getResource("fxml/AddBook.fxml");
     }
 
-    public void addNewBook(ActionEvent actionEvent) {
+    public void addNewBook(ActionEvent actionEvent) throws InterruptedException {
         clearErrorLabels();
 
         boolean authorCorrect = addBookService.validateAuthor(author.getText());
@@ -79,10 +82,13 @@ public class AddBookController {
             if (addBookService.isBookNotExisting(author.getText(), title.getText())){
                 BookDetails bookDetails = new BookDetails(author.getText(), title.getText(), cover.getText(), contents.getText(),genre.getText());
                 addBookService.addBookDetails(bookDetails).subscribe();
-                Long bookDetailId = addBookService.getIDByAuthorAndTitle(author.getText(), title.getText());
-                Book book = new Book(bookDetailId, Integer.parseInt(quantity.getText()), 5);
-                addBookService.addBook(book).subscribe();
-                errorLabel.setVisible(false);
+                sleep(2000);
+                Optional<BookDetails> bookDetail = addBookService.getIDByAuthorAndTitle(author.getText(), title.getText());
+                if(bookDetail != null){
+                    Book book = new Book(bookDetail.get().getId(), Integer.parseInt(quantity.getText()), 5);
+                    addBookService.addBook(book).subscribe();
+                    errorLabel.setVisible(false);
+                }
             }
             else{
                 errorLabel.setVisible(true);

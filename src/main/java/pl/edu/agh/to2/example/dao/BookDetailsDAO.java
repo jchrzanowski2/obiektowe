@@ -12,7 +12,7 @@ public interface BookDetailsDAO  extends R2dbcRepository<BookDetails, Long> {
             SELECT * from book_details bd
             where bd.author = :author and bd.title = :title
             """)
-    Mono<BookDetails> findBookDetailsByAuthorAndAndTitle(String email, String title);
+    Mono<BookDetails> findBookDetailsByAuthorAndAndTitle(String author, String title);
 
     @Query("""
             SELECT * from book_details
