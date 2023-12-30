@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pl.edu.agh.to2.example.controller.UserPanelController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label styleClass="welcomeText" text="Book Details"/>
+    <center>
+        <VBox>
+            <Label styleClass="messageLabel" fx:id="message" text="Message" visible="false"/>
+            <Label styleClass="labels" text="First name"/>
+            <TextField fx:id="firstName" onKeyTyped="#fieldChange"/>
+            <Label styleClass="errorLabel" fx:id="firstNameError" text="Error"/>
+            <Label styleClass="labels"  text="Last name"/>
+            <TextField fx:id="lastName" onKeyTyped="#fieldChange"/>
+            <Label styleClass="errorLabel" fx:id="lastNameError" text="Error"/>
+            <Label styleClass="labels"  text="Email"/>
+            <TextField fx:id="email" disable="true"/>
+            <Label styleClass="errorLabel" text="Error" visible="false"/>
+            <Label styleClass="labels"  text="Password"/>
+            <TextField fx:id="password" onKeyTyped="#fieldChange"/>
+            <Label styleClass="errorLabel" fx:id="passwordError" text="Error"/>
+            <Label styleClass="labels"  text="Role"/>
+            <TextField fx:id="role" disable="true"/>
+            <Label styleClass="Label" text="Error" visible="false"/>
+            <VBox fx:id="reservationPanel" visible="false">
+                <Label styleClass="labels"  text="Reservations"/>
+                <ScrollPane>
+                    <VBox fx:id="reservationList">
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+        </VBox>
+    </center>
+    <stylesheets>
+        <URL value="@../css/RegisterPanel.css" />
+    </stylesheets>
+</BorderPane>

@@ -16,6 +16,11 @@ public class LoginUser {
     private String lastName;
     private String email;
     private String password;
+
+    public long getRoleid() {
+        return roleid;
+    }
+
     private long roleid;
 
     public LoginUser(){
@@ -30,4 +35,23 @@ public class LoginUser {
         this.roleid = roleid;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

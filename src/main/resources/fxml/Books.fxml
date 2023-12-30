@@ -5,6 +5,7 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
 <BorderPane  xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -12,9 +13,36 @@
             prefHeight="400.0" prefWidth="600.0">
     <top>
         <VBox VBox.vgrow="ALWAYS">
-            <ListView styleClass="movieListView" fx:id="booksListView" VBox.vgrow="ALWAYS" prefHeight="500"/>
+            <ListView styleClass="movieListView" fx:id="booksListView" VBox.vgrow="ALWAYS" prefHeight="400" prefWidth="300"/>
         </VBox>
     </top>
+    <right>
+        <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+            <opaqueInsets>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </opaqueInsets>
+            <children>
+                <Button fx:id="deleteButton" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDeleteAction" text="Delete">
+                    <VBox.margin>
+                        <Insets bottom="1.0" left="5.0" right="5.0" top="1.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="editButton" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleEditAction" text="Edit">
+                    <VBox.margin>
+                        <Insets bottom="1.0" left="5.0" right="5.0" top="1.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="detailsButton" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDetailsAction" text="Details">
+                    <VBox.margin>
+                        <Insets bottom="1.0" left="5.0" right="5.0" top="1.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="1.0" left="5.0" right="5.0" top="1.0" />
+            </BorderPane.margin>
+        </VBox>
+    </right>
     <bottom>
         <Pagination fx:id="pagination"/>
     </bottom>

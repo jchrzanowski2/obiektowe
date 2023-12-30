@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pl.edu.agh.to2.example.controller.DetailBookController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label styleClass="welcomeText" text="Book Details"/>
+    <center>
+        <VBox>
+            <Label styleClass="labels" text="Author"/>
+            <TextField fx:id="author"/>
+            <Label styleClass="labels"  text="Title"/>
+            <TextField fx:id="title"/>
+            <Label styleClass="labels"  text="Cover"/>
+            <TextField fx:id="cover"/>
+            <Label styleClass="labels"  text="contents"/>
+            <TextField fx:id="contents"/>
+            <Label styleClass="labels"  text="genre"/>
+            <TextField fx:id="genre"/>
+            <Label styleClass="labels"  text="quantity"/>
+            <TextField fx:id="quantity"/>
+            <Label styleClass="labels"  text="rating"/>
+            <TextField fx:id="rating"/>
+        </VBox>
+    </center>
+    <stylesheets>
+        <URL value="@../css/RegisterPanel.css" />
+    </stylesheets>
+</BorderPane>
