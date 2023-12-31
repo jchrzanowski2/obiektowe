@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pl.edu.agh.to2.example.controller.BorrowBookController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label styleClass="welcomeText" text="Borrow Books"/>
+    <center>
+        <VBox>
+            <Label styleClass="labels" text="Select books"/>
+            <ScrollPane>
+                <VBox fx:id="bookList">
+                </VBox>
+            </ScrollPane>
+            <Label styleClass="errorLabel" fx:id="bookListError" text="Error" visible="false"/>
+            <Button styleClass="button" onAction="#submit" text="Submit"/>
+        </VBox>
+    </center>
+    <stylesheets>
+        <URL value="@../css/RegisterPanel.css" />
+    </stylesheets>
+</BorderPane>

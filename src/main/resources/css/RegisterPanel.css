@@ -16,6 +16,13 @@
     -fx-font-size: 15px
 }
 
+.messageLabel{
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #00ffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px
+}
+
 button{
     -fx-background-color: #3d5b5b;
 }
@@ -28,4 +35,8 @@ button{
 
 .mainBox {
     -fx-background-color: #e9eef3;
+}
+
+left{
+    -fx-fit-to-height: true;
 }
