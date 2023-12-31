@@ -10,12 +10,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
+import pl.edu.agh.to2.example.dao.dto.BooksFIlterDTO;
 import pl.edu.agh.to2.example.event.LoginEvent;
-import pl.edu.agh.to2.example.model.Book;
 import pl.edu.agh.to2.example.model.BookDetails;
 import pl.edu.agh.to2.example.model.LoginUser;
 import pl.edu.agh.to2.example.service.BooksPageService;
@@ -23,11 +22,19 @@ import pl.edu.agh.to2.example.service.DeleteBookService;
 import pl.edu.agh.to2.example.service.PermissionService;
 
 import java.net.URL;
-import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
 public class BooksPageController implements ApplicationListener<LoginEvent> {
+    @FXML
+    private HBox hBoxFilters;
+    @FXML
+    private TextField title;
+    @FXML
+    private TextField author;
+    @FXML
+    private TextField genre;
     @FXML
     private ListView<BookDetails> booksListView;
     @FXML
@@ -87,12 +94,6 @@ public class BooksPageController implements ApplicationListener<LoginEvent> {
             }
         });
 
-        this.pagination.setMaxPageIndicatorCount(10);
-        this.pagination.setPageFactory((pageIndex) -> {
-            refreshList();
-            return new VBox();
-        });
-        refreshList();
         if (!permissionService.canDeleteBooks(loggedInUser)) {
             deleteButton.setVisible(false);
         }
@@ -102,24 +103,39 @@ public class BooksPageController implements ApplicationListener<LoginEvent> {
         if (!permissionService.canViewBooks(loggedInUser)) {
             detailsButton.setVisible(false);
         }
+
+        this.title.setOnAction((value) -> refreshList());
+        this.author.setOnAction((value) -> refreshList());
+        this.genre.setOnAction((value) -> refreshList());
+
+        this.pagination.setMaxPageIndicatorCount(10);
+        this.pagination.setPageFactory((pageIndex) -> {
+            refreshList();
+            return new VBox();
+        });
+        refreshList();
     }
 
-    private Void refreshList() {
-        //this.recommendedMovies = recommendationService.getRecommendedMovies().collectList().block();
-        //Optional<Boolean> isRecommendedFilter = this.isRecommended.map(CheckBox::isSelected);
-        //Optional<String> newNameFilter = Optional.ofNullable(name.getText()).filter(s -> !s.isEmpty());
-        //Optional<Integer> newMinDuration = textFieldToOptInt(this.minDuration);
-        //Optional<Integer> newMaxDuration = textFieldToOptInt(this.maxDuration);
+    private void refreshList() {
+        Optional<String> newTitleFilter = Optional.ofNullable(title.getText()).filter(s -> !s.isEmpty());
+        Optional<String> newAuthorFilter = Optional.ofNullable(author.getText()).filter(s -> !s.isEmpty());
+        Optional<String> newGenreFilter = Optional.ofNullable(genre.getText()).filter(s -> !s.isEmpty());
 
-        //var moviesFilterDTO = new MovieFiltersDTO(newMinDuration, newMaxDuration, newNameFilter, isRecommendedFilter);
+        BooksFIlterDTO booksFIlterDTO = new BooksFIlterDTO(newTitleFilter, newAuthorFilter, newGenreFilter);
 
         Platform.runLater(() -> {
-            var numberPages = 1;
-            pagination.setPageCount(numberPages);
+            var numberPages = Math.floorDiv(
+                    booksPageService.getMovieCountWithFilter(booksFIlterDTO).block(),
+                    pagination.getMaxPageIndicatorCount()
+            );
+            pagination.setPageCount(numberPages > 0 ? numberPages : 1);
             this.booksListView.setItems(FXCollections.observableArrayList(
-                    booksPageService.getAllBooks().toStream().collect(Collectors.toList())));
+                    booksPageService.getMoviesWithFilterDTO(
+                                    booksFIlterDTO,
+                                    pagination.getCurrentPageIndex(),
+                                    pagination.getMaxPageIndicatorCount())
+                            .toStream().collect(Collectors.toList())));
         });
-        return null;
     }
 
     @FXML

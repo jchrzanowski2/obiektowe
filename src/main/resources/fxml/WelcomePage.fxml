@@ -7,8 +7,8 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="pl.edu.agh.to2.example.controller.WelcomePageController"
-      prefHeight="400.0" prefWidth="600.0">
-    <VBox prefHeight="400.0" prefWidth="600.0">
+      prefHeight="600.0" prefWidth="600.0">
+    <VBox prefHeight="600.0" prefWidth="600.0">
         <Label styleClass="welcomeText" text="Welcome to Library!"/>
         <Button styleClass="button" onAction="#toLogin" text="Login" alignment="BOTTOM_CENTER"/>
         <Button styleClass="button" onAction="#toRegister" text="Register" alignment="BOTTOM_CENTER"/>
