@@ -106,27 +106,15 @@ public class EditBookController {
         }
 
         if(authorCorrect && titleCorrect && coverCorrect && contentCorrect && genreCorrect && quantityCorrect){
-            /*bookDAO.findByID(bookDetails.getId())
+            bookDAO.findByID(bookDetails.getId())
                     .subscribe(
                             book -> {
-                                editBookService.updateBook(book).subscribe();
+                                editBookService.updateBook(book, quantity.getText()).subscribe();
                             },
                             error -> {
                             }
                     );
-            editBookService.updateBookDetails(bookDetails).subscribe();*/
-            deleteBookService.deleteBook(bookDetails).subscribe();
-            if (editBookService.isBookNotExisting(author.getText(), title.getText())){
-                BookDetails bookDetails = new BookDetails(author.getText(), title.getText(), cover.getText(), contents.getText(),genre.getText());
-                editBookService.addBookDetails(bookDetails).subscribe();
-                Long bookDetailId = editBookService.getIDByAuthorAndTitle(author.getText(), title.getText());
-                Book book = new Book(bookDetailId, Integer.parseInt(quantity.getText()), 5);
-                editBookService.addBook(book).subscribe();
-                errorLabel.setVisible(false);
-            }
-            else{
-                errorLabel.setVisible(true);
-            }
+            editBookService.updateBookDetails(bookDetails, author.getText(), title.getText(), cover.getText(), contents.getText(), genre.getText()).subscribe();
         }
         else{
             errorLabel.setVisible(true);

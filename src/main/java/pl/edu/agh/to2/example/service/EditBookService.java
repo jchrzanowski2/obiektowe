@@ -33,27 +33,11 @@ public class EditBookService {
         return !quantity.isEmpty()  && quantityPattern.matcher(quantity).matches();
     }
 
-    public Mono<Book> updateBook(Book book){
-        return this.bookDAO.updateBook(book.getId(),book.getQuantity());
+    public Mono<Book> updateBook(Book book, String quantity){
+        return this.bookDAO.updateBook(book.getId(), Integer.parseInt(quantity));
     }
 
-    public Mono<BookDetails> updateBookDetails(BookDetails bookDetails){
-        return this.bookDetailsDAO.updateBookDetails(bookDetails.getId(), bookDetails.getAuthor(),bookDetails.getTitle(), bookDetails.getCover(),bookDetails.getContents(),bookDetails.getGenre());
-    }
-
-    public boolean isBookNotExisting(String author, String title) {
-        return bookDetailsDAO.findBookDetailsByAuthorAndAndTitle(author, title).blockOptional().isEmpty();
-    }
-
-    public Mono<Book> addBook(Book book){
-        return this.bookDAO.save(book);
-    }
-
-    public Mono<BookDetails> addBookDetails(BookDetails book){
-        return this.bookDetailsDAO.save(book);
-    }
-
-    public Long getIDByAuthorAndTitle(String author, String title) {
-        return this.bookDetailsDAO.findAll().filter(bookDetails -> Objects.equals(bookDetails.getAuthor(), author) && Objects.equals(bookDetails.getTitle(), title)).blockFirst().getId();
+    public Mono<BookDetails> updateBookDetails(BookDetails bookDetails, String author, String title, String cover, String contents, String genre){
+        return this.bookDetailsDAO.updateBookDetails(bookDetails.getId(), author, title, cover, contents, genre);
     }
 }
