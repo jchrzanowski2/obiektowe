@@ -20,4 +20,11 @@ public class Roles {
         this.description = description;
     }
 
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

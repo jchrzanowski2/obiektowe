@@ -1,0 +1,19 @@
+button{
+    -fx-background-color: #3d5b5b;
+}
+
+.button {
+    -fx-background-color: #3dbfe5;
+    -fx-font-size: 20px;
+    -fx-font-style: oblique;
+}
+
+.headline{
+    -fx-text-fill: #2c4949;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.mainBox {
+    -fx-background-color: #e9eef3;
+}

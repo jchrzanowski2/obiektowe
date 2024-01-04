@@ -5,7 +5,7 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import pl.edu.agh.to2.example.controller.RegisterPageController;
+import pl.edu.agh.to2.example.controller.WelcomePageController;
 import pl.edu.agh.to2.example.util.SceneChanger;
 
 public class App extends Application  {
@@ -20,7 +20,7 @@ public class App extends Application  {
     @Override
     public void start(Stage stage) {
         SceneChanger.setMainStage(stage);
-        SceneChanger.changeScene(RegisterPageController.getFXML());
+        SceneChanger.changeScene(WelcomePageController.getFXML());
         stage.show();
     }
 

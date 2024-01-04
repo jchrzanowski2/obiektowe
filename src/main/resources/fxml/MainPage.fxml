@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<BorderPane
+            fx:id="mainPane"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pl.edu.agh.to2.example.controller.MainPageController"
+            prefHeight="600.0" prefWidth="600.0"
+styleClass="mainBox">
+    <left>
+        <BorderPane>
+            <top>
+                <ListView fx:id="categoriesListView" />
+            </top>
+            <bottom>
+                <Button mnemonicParsing="false" onAction="#logout" styleClass="button" text="Logout" />
+            </bottom>
+        </BorderPane>
+    </left>
+    <center>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <Label text="Welcome to Library" />
+            <Label text="by Bałwanki" />
+        </VBox>
+    </center>
+    <stylesheets>
+        <URL value="@../css/MainPage.css" />
+    </stylesheets>
+</BorderPane>
